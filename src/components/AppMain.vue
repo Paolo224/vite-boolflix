@@ -28,19 +28,19 @@ export default {
                             {{ movie.original_title }}
                         </h5>
                         <p v-if="(movie.original_language == 'it')">
-                            <img src="../assets/italia.png" alt="">
+                            <img src="../assets/it.png" alt="">
                         </p>
                         <p v-else-if="(movie.original_language == 'en')">
-                            <img src="../assets/inghilterra.png" alt="">
+                            <img src="../assets/en.png" alt="">
                         </p>
                         <p v-else-if="(movie.original_language == 'fr')">
-                            <img src="../assets/francia.png" alt="">
+                            <img src="../assets/fr.png" alt="">
                         </p>
                         <p v-else-if="(movie.original_language == 'es')">
-                            <img src="../assets/spagna.png" alt="">
+                            <img src="../assets/es.png" alt="">
                         </p>
                         <p v-else-if="(movie.original_language == 'ja')">
-                            <img src="../assets/cina.png" alt="">
+                            <img src="../assets/ja.png" alt="">
                         </p>
                         <p v-else>
                             {{ movie.original_language.toUpperCase() }}
@@ -66,19 +66,19 @@ export default {
                             {{ serie.original_name }}
                         </h5>
                         <p v-if="(serie.original_language == 'it')">
-                            <img src="../assets/italia.png" alt="">
+                            <img src="../assets/it.png" alt="">
                         </p>
                         <p v-else-if="(serie.original_language == 'en')">
-                            <img src="../assets/inghilterra.png" alt="">
+                            <img src="../assets/en.png" alt="">
                         </p>
                         <p v-else-if="(serie.original_language == 'fr')">
-                            <img src="../assets/francia.png" alt="">
+                            <img src="../assets/fr.png" alt="">
                         </p>
                         <p v-else-if="(serie.original_language == 'es')">
-                            <img src="../assets/spagna.png" alt="">
+                            <img src="../assets/es.png" alt="">
                         </p>
                         <p v-else-if="(serie.original_language == 'ja')">
-                            <img src="../assets/cina.png" alt="">
+                            <img src="../assets/ja.png" alt="">
                         </p>
                         <p v-else>
                             {{ serie.original_language.toUpperCase() }}
