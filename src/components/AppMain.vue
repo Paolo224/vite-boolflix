@@ -13,34 +13,39 @@ export default {
 <template>
     <main>
         <ul>
-            <li v-for="movie in store.moviesLists">
-                <h4>
-                    {{ movie.title }}
-                </h4>
-                <h5>
-                    {{ movie.original_title }}
-                </h5>
-                <p v-if="(movie.original_language == 'it')">
-                    <img src="../assets/italia.png" alt="">
-                </p>
-                <p v-else-if="(movie.original_language == 'en')">
-                    <img src="../assets/inghilterra.png" alt="">
-                </p>
-                <p v-else-if="(movie.original_language == 'fr')">
-                    <img src="../assets/francia.png" alt="">
-                </p>
-                <p v-else-if="(movie.original_language == 'es')">
-                    <img src="../assets/spagna.png" alt="">
-                </p>
-                <p v-else-if="(movie.original_language == 'ja')">
-                    <img src="../assets/cina.png" alt="">
-                </p>
-                <p v-else>
-                    {{ movie.original_language.toUpperCase() }}
-                </p>
-                <p>
-                    {{ movie.vote_average }}
-                </p>
+            <li v-for="movie, index in store.moviesLists">
+                <div class="card">
+                    <img :src="'http://image.tmdb.org/t/p/w300/' + store.moviesLists[index].backdrop_path" alt="">
+                    <div class="info">
+                        <h4>
+                            {{ movie.title }}
+                        </h4>
+                        <h5>
+                            {{ movie.original_title }}
+                        </h5>
+                        <p v-if="(movie.original_language == 'it')">
+                            <img src="../assets/italia.png" alt="">
+                        </p>
+                        <p v-else-if="(movie.original_language == 'en')">
+                            <img src="../assets/inghilterra.png" alt="">
+                        </p>
+                        <p v-else-if="(movie.original_language == 'fr')">
+                            <img src="../assets/francia.png" alt="">
+                        </p>
+                        <p v-else-if="(movie.original_language == 'es')">
+                            <img src="../assets/spagna.png" alt="">
+                        </p>
+                        <p v-else-if="(movie.original_language == 'ja')">
+                            <img src="../assets/cina.png" alt="">
+                        </p>
+                        <p v-else>
+                            {{ movie.original_language.toUpperCase() }}
+                        </p>
+                        <p>
+                            {{ movie.vote_average }}
+                        </p>
+                    </div>
+                </div>
             </li>
             <li v-for="serie in store.seriesLists">
                 <h4>
@@ -76,5 +81,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+div.card {
+    position: relative;
+    color: white;
 
+    div.info {
+        position: absolute;
+        z-index: 2;
+    }
+}
 </style>
