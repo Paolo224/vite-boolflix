@@ -14,12 +14,13 @@ export default {
     <main>
         <ul>
             <li v-for="movie, index in store.moviesLists">
-                <div class="card">
+                <div class="cardMovie">
                     <img v-if="(store.moviesLists[index].backdrop_path) === null"
                         src="https://thumbnails.pcgamingwiki.com/a/ab/ERROR_Human_Not_Found_cover.jpg/300px-ERROR_Human_Not_Found_cover.jpg"
                         alt="">
-                    <img :src="'http://image.tmdb.org/t/p/w342/' + store.moviesLists[index].backdrop_path" alt="">
-                    <div class="info">
+                    <img v-else :src="'http://image.tmdb.org/t/p/w342/' + store.moviesLists[index].backdrop_path"
+                        alt="">
+                    <div class="infoMovie">
                         <h4>
                             {{ movie.title }}
                         </h4>
@@ -51,40 +52,41 @@ export default {
                 </div>
             </li>
             <li v-for="serie, index in store.seriesLists">
-                <div class="card">
+                <div class="cardSerie">
                     <img v-if="(store.seriesLists[index].backdrop_path) === null"
                         src="https://thumbnails.pcgamingwiki.com/a/ab/ERROR_Human_Not_Found_cover.jpg/300px-ERROR_Human_Not_Found_cover.jpg"
                         alt="">
-                    <img :src="'http://image.tmdb.org/t/p/w342/' + store.seriesLists[index].backdrop_path" alt="">
-                </div>
-                <div class="info">
-                    <h4>
-                        {{ serie.name }}
-                    </h4>
-                    <h5>
-                        {{ serie.original_name }}
-                    </h5>
-                    <p v-if="(serie.original_language == 'it')">
-                        <img src="../assets/italia.png" alt="">
-                    </p>
-                    <p v-else-if="(serie.original_language == 'en')">
-                        <img src="../assets/inghilterra.png" alt="">
-                    </p>
-                    <p v-else-if="(serie.original_language == 'fr')">
-                        <img src="../assets/francia.png" alt="">
-                    </p>
-                    <p v-else-if="(serie.original_language == 'es')">
-                        <img src="../assets/spagna.png" alt="">
-                    </p>
-                    <p v-else-if="(serie.original_language == 'ja')">
-                        <img src="../assets/cina.png" alt="">
-                    </p>
-                    <p v-else>
-                        {{ serie.original_language.toUpperCase() }}
-                    </p>
-                    <p>
-                        {{ serie.vote_average }}
-                    </p>
+                    <img v-else :src="'http://image.tmdb.org/t/p/w342/' + store.seriesLists[index].backdrop_path"
+                        alt="">
+                    <div class="infoSerie">
+                        <h4>
+                            {{ serie.name }}
+                        </h4>
+                        <h5>
+                            {{ serie.original_name }}
+                        </h5>
+                        <p v-if="(serie.original_language == 'it')">
+                            <img src="../assets/italia.png" alt="">
+                        </p>
+                        <p v-else-if="(serie.original_language == 'en')">
+                            <img src="../assets/inghilterra.png" alt="">
+                        </p>
+                        <p v-else-if="(serie.original_language == 'fr')">
+                            <img src="../assets/francia.png" alt="">
+                        </p>
+                        <p v-else-if="(serie.original_language == 'es')">
+                            <img src="../assets/spagna.png" alt="">
+                        </p>
+                        <p v-else-if="(serie.original_language == 'ja')">
+                            <img src="../assets/cina.png" alt="">
+                        </p>
+                        <p v-else>
+                            {{ serie.original_language.toUpperCase() }}
+                        </p>
+                        <p>
+                            {{ serie.vote_average }}
+                        </p>
+                    </div>
                 </div>
             </li>
         </ul>
@@ -92,12 +94,25 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-div.card {
+div.cardMovie {
     position: relative;
+
+    div.infoMovie {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+    }
 }
 
-div.info {
-    position: absolute;
-    z-index: 2;
+div.cardSerie {
+    position: relative;
+
+    div.infoSerie {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+    }
 }
 </style>
