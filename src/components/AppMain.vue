@@ -1,7 +1,13 @@
 <script>
 import { store } from '../store.js'
-
+import AppMovies from './AppMovies.vue'
+import AppSeries from './AppSeries.vue'
 export default {
+    components: {
+        AppMovies,
+        AppSeries,
+    },
+
     data() {
         return {
             store,
@@ -12,107 +18,14 @@ export default {
 
 <template>
     <main>
-        <ul>
-            <li v-for="movie, index in store.moviesLists">
-                <div class="cardMovie">
-                    <img v-if="(store.moviesLists[index].backdrop_path) === null"
-                        src="https://thumbnails.pcgamingwiki.com/a/ab/ERROR_Human_Not_Found_cover.jpg/300px-ERROR_Human_Not_Found_cover.jpg"
-                        alt="">
-                    <img v-else :src="'http://image.tmdb.org/t/p/w342/' + store.moviesLists[index].backdrop_path"
-                        alt="">
-                    <div class="infoMovie">
-                        <h4>
-                            {{ movie.title }}
-                        </h4>
-                        <h5>
-                            {{ movie.original_title }}
-                        </h5>
-                        <p v-if="(movie.original_language == 'it')">
-                            <img src="../assets/it.png" alt="">
-                        </p>
-                        <p v-else-if="(movie.original_language == 'en')">
-                            <img src="../assets/en.png" alt="">
-                        </p>
-                        <p v-else-if="(movie.original_language == 'fr')">
-                            <img src="../assets/fr.png" alt="">
-                        </p>
-                        <p v-else-if="(movie.original_language == 'es')">
-                            <img src="../assets/es.png" alt="">
-                        </p>
-                        <p v-else-if="(movie.original_language == 'ja')">
-                            <img src="../assets/ja.png" alt="">
-                        </p>
-                        <p v-else>
-                            {{ movie.original_language.toUpperCase() }}
-                        </p>
-                        <p>
-                            {{ movie.vote_average }}
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li v-for="serie, index in store.seriesLists">
-                <div class="cardSerie">
-                    <img v-if="(store.seriesLists[index].backdrop_path) === null"
-                        src="https://thumbnails.pcgamingwiki.com/a/ab/ERROR_Human_Not_Found_cover.jpg/300px-ERROR_Human_Not_Found_cover.jpg"
-                        alt="">
-                    <img v-else :src="'http://image.tmdb.org/t/p/w342/' + store.seriesLists[index].backdrop_path"
-                        alt="">
-                    <div class="infoSerie">
-                        <h4>
-                            {{ serie.name }}
-                        </h4>
-                        <h5>
-                            {{ serie.original_name }}
-                        </h5>
-                        <p v-if="(serie.original_language == 'it')">
-                            <img src="../assets/it.png" alt="">
-                        </p>
-                        <p v-else-if="(serie.original_language == 'en')">
-                            <img src="../assets/en.png" alt="">
-                        </p>
-                        <p v-else-if="(serie.original_language == 'fr')">
-                            <img src="../assets/fr.png" alt="">
-                        </p>
-                        <p v-else-if="(serie.original_language == 'es')">
-                            <img src="../assets/es.png" alt="">
-                        </p>
-                        <p v-else-if="(serie.original_language == 'ja')">
-                            <img src="../assets/ja.png" alt="">
-                        </p>
-                        <p v-else>
-                            {{ serie.original_language.toUpperCase() }}
-                        </p>
-                        <p>
-                            {{ serie.vote_average }}
-                        </p>
-                    </div>
-                </div>
-            </li>
-        </ul>
+        <AppMovies />
+        <AppSeries />
     </main>
 </template>
 
 <style lang="scss" scoped>
-div.cardMovie {
-    position: relative;
-
-    div.infoMovie {
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        left: 0;
-    }
-}
-
-div.cardSerie {
-    position: relative;
-
-    div.infoSerie {
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        left: 0;
-    }
+main {
+    max-width: 900px;
+    margin: 0 auto;
 }
 </style>
