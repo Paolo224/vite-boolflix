@@ -11,7 +11,7 @@ export default {
     methods: {
         getImagePath: function (imgpath) {
             return new URL(`../assets/${imgpath}.png`, import.meta.url).href
-        }
+        },
     }
 }
 </script>
@@ -22,7 +22,7 @@ export default {
             <div class="cardMovie">
                 <img v-if="(store.moviesLists[index].poster_path) === null"
                     src="https://bitsofco.de/content/images/2018/12/Screenshot-2018-12-16-at-21.06.29.png" alt="">
-                <img v-else :src="'http://image.tmdb.org/t/p/w342/' + store.moviesLists[index].poster_path" alt="">
+                <img v-else :src="'http://image.tmdb.org/t/p/w185/' + store.moviesLists[index].poster_path" alt="">
                 <div class="infoMovie">
                     <h4>
                         {{ movie.title }}
@@ -31,13 +31,14 @@ export default {
                         {{ movie.original_title }}
                     </h5>
                     <p>
-                        <img :src="getImagePath(movie.original_language)" alt="flag">
+                        <img :src="getImagePath(movie.original_language)" alt="Country-Flag">
                     </p>
-                    <p>
-                        {{
-    Math.ceil(movie.vote_average / 2)
-                        }}
-                    </p>
+                    <span v-for="n in Math.ceil(movie.vote_average / 2)">
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <span v-for="n in 5 - (Math.ceil(movie.vote_average / 2))">
+                        <i class="fa-regular fa-star"></i>
+                    </span>
                 </div>
             </div>
         </li>
@@ -57,6 +58,14 @@ div.cardMovie {
         z-index: 2;
         top: 0;
         left: 0;
+
+        span i {
+            color: yellow;
+        }
+
+        img {
+            width: 25px;
+        }
     }
 }
 </style>
