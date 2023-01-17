@@ -22,7 +22,7 @@ export default {
         <li v-for="serie, index in store.seriesLists">
             <div class="cardSerie">
                 <div class="black"></div>
-                <img v-if="(store.seriesLists[index].poster_path) === null"
+                <img v-if="(serie.poster_path) === null"
                     src="https://bitsofco.de/content/images/2018/12/Screenshot-2018-12-16-at-21.06.29.png" alt="">
                 <img v-else :src="'http://image.tmdb.org/t/p/w185/' + store.seriesLists[index].poster_path" alt="">
                 <div class="infoSerie">
