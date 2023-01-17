@@ -34,7 +34,9 @@ export default {
                         <img :src="getImagePath(movie.original_language)" alt="flag">
                     </p>
                     <p>
-                        {{ movie.vote_average }}
+                        {{
+    Math.ceil(movie.vote_average / 2)
+                        }}
                     </p>
                 </div>
             </div>
