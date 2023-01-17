@@ -22,7 +22,8 @@ export default {
                 .then((response) => {
                     console.log(response.data.results);
                     this.store.moviesLists = response.data.results;
-                    console.log(this.store.moviesLists)
+                    console.log(this.store.moviesLists);
+                    this.store.querySearch = '';
                 })
         },
         getSeries(querySearch) {
@@ -35,24 +36,44 @@ export default {
                 .then((response) => {
                     console.log(response.data.results);
                     this.store.seriesLists = response.data.results;
-                    console.log(this.store.seriesLists)
+                    console.log(this.store.seriesLists);
+                    this.store.querySearch = '';
                 })
         }
-    },
-
-    created() {
-
     }
 }
 </script>
 
 <template>
     <header>
-        <input type="text" v-model="store.querySearch">
-        <button @click="getMovies(store.querySearch), getSeries(store.querySearch)">Search</button>
+        <h1>
+            boolflix
+        </h1>
+        <input placeholder="Inserisci il film/serieTV che vuoi cercare e clicca 'INVIO'" type="text"
+            v-model="store.querySearch" @keyup.enter="getMovies(store.querySearch), getSeries(store.querySearch)">
     </header>
 </template>
 
 <style lang="scss" scoped>
+header {
+    height: 60px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
 
+    h1 {
+        color: rgb(188, 20, 20);
+        font-weight: 700;
+    }
+
+    input {
+        width: 30%;
+        padding: .2rem;
+        border: 1px solid black;
+        border-radius: .4rem;
+        background-color: white;
+    }
+}
 </style>

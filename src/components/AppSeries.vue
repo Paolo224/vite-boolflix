@@ -17,9 +17,11 @@ export default {
 </script>
 
 <template>
+    <h2>SERIE TV</h2>
     <ul>
         <li v-for="serie, index in store.seriesLists">
             <div class="cardSerie">
+                <div class="black"></div>
                 <img v-if="(store.seriesLists[index].poster_path) === null"
                     src="https://bitsofco.de/content/images/2018/12/Screenshot-2018-12-16-at-21.06.29.png" alt="">
                 <img v-else :src="'http://image.tmdb.org/t/p/w185/' + store.seriesLists[index].poster_path" alt="">
@@ -46,15 +48,40 @@ export default {
 </template>
 
 <style lang="scss">
-ul li {
-    list-style-type: none;
+h2 {
+    background-color: black;
+    color: rgb(188, 20, 20);
+    text-align: center;
+    padding: .3rem;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+        list-style-type: none;
+        width: 185px;
+        margin: .4rem;
+    }
 }
 
 div.cardSerie {
     position: relative;
+    border: 3px solid white;
+    background-color: white;
 
     img {
-        width: 185px;
+        width: 100%;
+    }
+
+    div.black {
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: .65;
+        display: none;
     }
 
     div.infoSerie {
@@ -62,6 +89,7 @@ div.cardSerie {
         z-index: 2;
         top: 0;
         left: 0;
+        display: none;
 
         span i {
             color: yellow;
@@ -71,5 +99,14 @@ div.cardSerie {
             width: 25px;
         }
     }
+}
+
+div.cardSerie:hover div.infoSerie {
+    display: block;
+    color: white;
+}
+
+div.cardSerie:hover div.black {
+    display: block;
 }
 </style>
