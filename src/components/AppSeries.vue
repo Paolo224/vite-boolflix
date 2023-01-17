@@ -27,13 +27,16 @@ export default {
                 <img v-else :src="'http://image.tmdb.org/t/p/w185/' + store.seriesLists[index].poster_path" alt="">
                 <div class="infoSerie">
                     <h4>
-                        {{ serie.name }}
+                        Titolo: {{ serie.name }}
                     </h4>
                     <h5>
-                        {{ serie.original_name }}
+                        Titolo originale: {{ serie.original_name }}
                     </h5>
-                    <p>
-                        <img :src="getImagePath(serie.original_language)" alt="flag">
+                    <p v-if="store.flags.includes(serie.original_language)">
+                        Lingua: <img :src="getImagePath(serie.original_language)" alt="Country-Flag">
+                    </p>
+                    <p v-else>
+                        Lingua: {{ serie.original_language.toUpperCase() }}
                     </p>
                     <span v-for="n in Math.ceil(serie.vote_average / 2)">
                         <i class="fa-solid fa-star"></i>
@@ -97,6 +100,11 @@ div.cardSerie {
 
         img {
             width: 25px;
+        }
+
+        p {
+            display: flex;
+            align-items: center;
         }
     }
 }

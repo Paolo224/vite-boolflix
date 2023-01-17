@@ -27,17 +27,16 @@ export default {
                 <img v-else :src="'http://image.tmdb.org/t/p/w185/' + store.moviesLists[index].poster_path" alt="">
                 <div class="infoMovie">
                     <h4>
-                        {{ movie.title }}
+                        Titolo: {{ movie.title }}
                     </h4>
                     <h5>
-                        {{ movie.original_title }}
+                        Titolo originale: {{ movie.original_title }}
                     </h5>
-                    <p>
-                        <img v-if="store.flags.includes(movie.original_language)"
-                            :src="getImagePath(movie.original_language)" alt="Country-Flag">
-                    <p v-else>
-                        {{ movie.original_language.toUpperCase() }}
+                    <p v-if="store.flags.includes(movie.original_language)">
+                        Lingua: <img :src="getImagePath(movie.original_language)" alt="Country-Flag">
                     </p>
+                    <p v-else>
+                        Lingua: {{ movie.original_language.toUpperCase() }}
                     </p>
                     <span v-for="n in Math.ceil(movie.vote_average / 2)">
                         <i class="fa-solid fa-star"></i>
@@ -103,6 +102,11 @@ div.cardMovie {
 
         img {
             width: 25px;
+        }
+
+        p {
+            display: flex;
+            align-items: center;
         }
     }
 }
